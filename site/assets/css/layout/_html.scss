@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+@font-face {
+    font-family: 'Ubuntu';
+    src: url('../fonts/ubuntu.ttf')  format('truetype'), url('../fonts/ubuntu.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'OpenSans';
+    src: url('../fonts/opensans.ttf') format('truetype'), url('../fonts/opensans.otf') format('opentype');
+}
+
+$cor-branca: #FFFFFF;
+$cor-verde: #0b6666;
+$cor-preto-1: #4F4F4F;
+$cor-preto-2: #4A4A4A;
+$cor-preto-3: #2C2C2C;
+$cor-preto-4: #000000;
+
+$cor-sombra-branco: #FFFFFF1A;
+$cor-sombra-preto-1: #0000001A;
+$cor-sombra-preto-2: #00000066;
+
+$font-opensans: 'OpenSans', sans-serif;
+$font-ubunto: 'Ubunto', sans-serif;
+
+* {
+    font-family: $font-opensans;
+    box-sizing: border-box;
+    padding: 0px;
+    margin: 0px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: $font-ubunto;
+}
+
+p {
+    color: $cor-preto-3;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+img {
+    object-fit: cover;
+}

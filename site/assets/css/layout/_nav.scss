@@ -1,0 +1,88 @@
+/*Nav*/
+nav {
+    background-color: $cor-branca;
+    box-shadow: 0px 2px 10px -6px $cor-preto-4;
+    position: sticky;
+    top: 0px;
+    z-index: 1000;
+
+    #nav {
+        max-width: 1200px;
+        padding: 0px 15px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        ul {
+            height: 34px;
+            border-left: 2px solid $cor-sombra-preto-1;
+            display: flex;
+            align-items: center;
+
+            a {
+                font-size: 15px;
+                color: $cor-verde;
+                margin: 0px 2.5px;
+                padding: 4px 15px;
+                font-weight: 500;
+                border-radius: 15px;
+                transition: 0.3s;
+        
+                &:hover {
+                    background-color: $cor-verde;
+                    color: $cor-branca;
+                }
+            }
+        }
+    }
+}
+
+/*Busca*/
+#pesquisa {
+    width: 26px;
+    height: 26px;
+    background-color: $cor-verde;
+    border-radius: 10px;
+}
+
+@media (max-width: 700px) {
+    nav {
+        height: 0px;
+
+        #nav {
+    
+            ul {
+                position: fixed;
+                top: 61px;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                max-width: 250px;
+                margin: 0;
+                background-color: $cor-branca;
+                padding: 0px 20px;
+                flex-direction: column;
+                transition: 0.5s;
+                border: none;
+                display: block;
+                
+                a {
+                    display: block;
+                    padding: 10px 5px;
+                    margin: 0px;
+                    border-radius: 0px;
+                }
+            }
+    
+            li {
+                border-bottom: 2px solid $cor-verde;
+                margin: 0px;
+            }
+        
+            .active {
+                right: 0%;
+            }
+        }
+    }
+}

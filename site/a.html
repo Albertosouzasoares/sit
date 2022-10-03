@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            background-color: rgb(51, 51, 51);
+            height: 100%;
+            width: 100%;
+        }
+
+        header {
+            width: 100%;
+            background-color: #101010;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0px;
+            z-index: 1000;
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: 0px auto;
+            padding: 0px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            width: 50px;
+            height: 50px;
+            background-color: #555555;
+            border-radius: 10px;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .hamburguer {
+            width: 30px;
+            height: 30px;
+            background-color: transparent;
+            border-radius: 5px;
+            border: 0px;
+            position: relative;
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburguer::after {
+            content: "";
+            position: absolute;
+            top: 35%;
+            left: 15%;
+            width: 70%;
+            height: 5%;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .hamburguer::before {
+            content: "";
+            position: absolute;
+            top: 55%;
+            left: 15%;
+            width: 70%;
+            height: 5%;
+            border-radius: 5px;
+            background-color: white;
+        }
+
+        .menu {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .menu li {
+            margin-left: 10px;
+        }
+
+        .menu a {
+            display: block;
+            padding: 10px 15px;
+            text-decoration: none;
+            color: #555555;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            color: white;
+        }
+
+        @media screen and (max-width: 800px) {
+            .hamburguer {
+                display: block;
+                z-index: 1000;
+            }
+
+            .menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 100%;
+                max-width: 250px;
+                margin: 0;
+                background-color: #222222;
+                padding: 100px 20px;
+                flex-direction: column;
+                transition: 0.5s;
+            }
+
+            .menu.active {
+                right: 0;
+            }
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <a href="#">Logo</a>
+            </div>
+            <div class="hamburguer active"></div>
+            <ul class="menu">
+                <li><a href="#">Link 1</a></li>
+                <li><a href="#">Link 2</a></li>
+                <li><a href="#">Link 3</a></li>
+                <li><a href="#">Link 4</a></li>
+                <li><a href="#">Link 5</a></li>
+            </ul>
+        </div>
+    </header>
+    <script>
+        $(document).ready(function () {
+            $(".hamburguer").click(function () {
+                $(this).toggleClass("active");
+                $(".menu").toggleClass("active");
+            });
+        });
+    </script>
+</body>
+</html>

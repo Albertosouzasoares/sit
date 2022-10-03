@@ -1,0 +1,66 @@
+footer {
+    background-color: $cor-preto-2;
+
+    .social {
+        justify-content: center;
+        padding: 10px;
+
+        svg {
+            fill: $cor-branca;
+
+            &:hover {
+                fill: $cor-verde;
+                background: none;
+            }
+        }
+    }
+}
+
+#roda-pe {
+    max-width: 1170px;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    border-top: 1px solid $cor-sombra-preto-1;
+
+    p {
+        color: $cor-branca;
+        font-size: 14px;
+        letter-spacing: 0.6px;
+        margin: 8px 0px;
+        padding: 2px 15px;
+        border-right: 2px solid $cor-sombra-preto-1;
+        order: 0;
+    }
+
+    a {
+        color: $cor-branca;
+        font-size: 16px;
+        letter-spacing: 0.6px;
+        margin: 8px 0px;
+        font-weight: 600;
+        text-decoration: none;
+        padding: 2px 15px;
+        transition: 0.5s;
+        order: 1;
+
+        &:hover {
+            color: $cor-verde;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    #roda-pe {
+        display: block;
+        
+        p {
+            margin-top: 20px;
+        }
+
+        a {
+            display: block;
+            font-size: 14px;
+        }
+    }
+}
