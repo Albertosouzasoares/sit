@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.es.gov.br/fonts/font-awesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="style.css">
+    <title id="title"></title>
+</head>
+<body>
+    <header>
+        <section class="cabecalho">
+            <a href="/">
+                <ion-icon name="arrow-back-circle-outline"></ion-icon>
+            </a>
+
+            <div>
+                <a id="google" href="" target="_blank">
+                    <ion-icon name="logo-google"></ion-icon>
+                </a>
+            
+                <button onclick="save()">
+                    <ion-icon name="save-outline"></ion-icon>
+                </button>
+                <button onclick="download()">
+                    <ion-icon name="cloud-download-outline"></ion-icon>
+                </button>
+            </div>
+        </section>
+    </header>
+
+    <section class="ferramentas">
+        <div>
+    
+            <!-- FORMATO DA PALAVRA -->
+            <button id="b-1" onclick="negrito1()">
+                <span>B</span>
+            </button>
+            <button id="b-2" onclick="negrito2()">
+                <span>B</span>
+            </button>
+            <button id="i-1" onclick="italico1()">
+                <span style="font-family: Times, serif; font-weight: bold; font-size: 15px; font-style: italic;">I</span>
+            </button>
+            <button id="i-2" onclick="italico2()">
+                <span style="font-family: Times, serif; font-weight: bold; font-size: 15px; font-style: italic;">I</span>
+            </button>
+            <button id="u-1" onclick="sublinhado1()">
+                <span style="text-decoration: underline;">U</span>
+            </button>
+            <button id="u-2" onclick="sublinhado2()">
+                <span style="text-decoration: underline;">U</span>
+            </button>
+    
+            <!-- FORMATO DO TEXTO -->
+            <button onclick="maiuscula()">
+                <span>A</span>
+            </button>
+            <button onclick="minuscula()">
+                <span>a</span>
+            </button>
+            <button onclick="maiusculaEminuscula()">
+                <span>Aa</span>
+            </button>
+    
+            <!-- TEXT ALING  -->
+            <button onclick="right()">
+                <img src="iconi/aling-right.svg" alt="Text align: right">
+            </button>
+            <button onclick="center()">
+                <img src="iconi/aling-center.svg" alt="Text align: center">
+            </button>
+            <button onclick="left()">
+                <img src="iconi/aling-left.svg" alt="Text align: left">
+            </button>
+            <button onclick="justify()">
+                <img src="iconi/aling-justify.svg" alt="Text align: justify">
+            </button>
+        </div>
+    </section>
+
+    <main>
+        <section class="editor">
+            <div contenteditable="true" id="titulo" onclick="limparTituloClick()" onkeydown="limparTitulo()">
+                TÍTULO DO TEXTO
+            </div>
+
+            <div contenteditable="true" id="content" onclick="limparContentClick()" onkeydown="limparContent()">
+                CONTEUDO DO TEXTO
+            </div>
+        </section>
+
+        <div id="data-criado"></div>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script src="js.js"></script>
+
+    <script>
+        document.getElementById("title").innerText = localStorage.getItem("Editor-1");
+        document.getElementById("google").href = "https://www.google.com/search?q=" + localStorage.getItem("Tema-1");
+        document.getElementById("data-criado").innerText = localStorage.getItem("Data-1");
+
+        if (localStorage.getItem("Titulo-1")) {
+            if (localStorage.getItem("Titulo-1") !== "") {
+                document.getElementById("titulo").innerText = localStorage.getItem("Titulo-1");
+            } if (localStorage.getItem("Conteudo-1") !== "") {
+                document.getElementById("content").innerText = localStorage.getItem("Conteudo-1");
+            }
+        }
+
+        function save() {
+            const titulo = document.getElementById("titulo").innerText;
+            const content = document.getElementById("content").innerText;
+            const resumo = content.substr(0, 100) + "...";
+
+            localStorage.setItem("Titulo-1", titulo);
+            localStorage.setItem("Conteudo-1", content);
+            localStorage.setItem("Resumo-1", resumo);
+        }
+    </script>
+</body>
+</html>

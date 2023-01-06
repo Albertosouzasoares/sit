@@ -1,117 +1,116 @@
-let optionsButtons = document.querySelectorAll(".option-button");
-let advancedOptionButton = document.querySelectorAll(".adv-option-button");
-let fontName = document.getElementById("fontName");
-let fontSizeRef = document.getElementById("fontSize");
-let writingArea = document.getElementById("text-input");
-let linkButton = document.getElementById("createLink");
-let alignButtons = document.querySelectorAll(".align");
-let spacingButtons = document.querySelectorAll(".spacing");
-let formatButtons = document.querySelectorAll(".format");
-let scriptButtons = document.querySelectorAll(".script");
+// ABRI MINI JANELA PARA CRIAR NOVO DOCUMENTO
+function novo() {
+    document.getElementById("novo").classList.toggle("novo");
+}
 
-//List of fontlist
-let fontList = [
-  "Arial",
-  "Verdana",
-  "Times New Roman",
-  "Garamond",
-  "Georgia",
-  "Courier New",
-  "cursive",
-];
+// FUNÇÃO PARA ABRIR MAIS CARACTERISTICAS DE NOTAS
+function notas() {
+    document.getElementById("caracteristica-1").style.display = "block";
+    document.getElementById("caracteristica-2").style.display = "none";
+}
 
-//Initial Settings
-const initializer = () => {
-  //function calls for highlighting buttons
-  //No highlights for link, unlink,lists, undo,redo since they are one time operations
-  highlighter(alignButtons, true);
-  highlighter(spacingButtons, true);
-  highlighter(formatButtons, false);
-  highlighter(scriptButtons, true);
+// FUNÇÃO PARA ABRIR MAIS CARACTERISTICAS DE TEXTO
+function texto() {
+    document.getElementById("caracteristica-2").style.display = "block";
+    document.getElementById("caracteristica-1").style.display = "none";
+}
 
-  //create options for font names
-  fontList.map((value) => {
-    let option = document.createElement("option");
-    option.value = value;
-    option.innerHTML = value;
-    fontName.appendChild(option);
-  });
+// CRIAR NOVO DOCUMENTO
+function next() {
 
-  //fontSize allows only till 7
-  for (let i = 1; i <= 7; i++) {
-    let option = document.createElement("option");
-    option.value = i;
-    option.innerHTML = i;
-    fontSizeRef.appendChild(option);
-  }
+    // NOTAS
+    if (document.getElementById("notas").checked) {
+        const nome1 = document.getElementById("nome-1").value;
 
-  //default size
-  fontSizeRef.value = 3;
-};
+        if (nome1 !== "") {
+            
+            // EDITORES DE 1 A 10
+            if (localStorage.getItem("Nome-1")) {
+                localStorage.setItem("Nome-2", "nome1");
 
-//main logic
-const modifyText = (command, defaultUi, value) => {
-  //execCommand executes command on selected text
-  document.execCommand(command, defaultUi, value);
-};
+                window.open("http://127.0.0.1:5500/site-1/documentos-1.html");
+            } else {
+                localStorage.setItem("Nome-1", nome1);
+            }
 
-//For basic operations which don't need value parameter
-optionsButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    modifyText(button.id, false, null);
-  });
-});
-
-//options that require value parameter (e.g colors, fonts)
-advancedOptionButton.forEach((button) => {
-  button.addEventListener("change", () => {
-    modifyText(button.id, false, button.value);
-  });
-});
-
-//link
-linkButton.addEventListener("click", () => {
-  let userLink = prompt("Enter a URL");
-  //if link has http then pass directly else add https
-  if (/http/i.test(userLink)) {
-    modifyText(linkButton.id, false, userLink);
-  } else {
-    userLink = "http://" + userLink;
-    modifyText(linkButton.id, false, userLink);
-  }
-});
-
-//Highlight clicked button
-const highlighter = (className, needsRemoval) => {
-  className.forEach((button) => {
-    button.addEventListener("click", () => {
-      //needsRemoval = true means only one button should be highlight and other would be normal
-      if (needsRemoval) {
-        let alreadyActive = false;
-
-        //If currently clicked button is already active
-        if (button.classList.contains("active")) {
-          alreadyActive = true;
+            document.getElementById("novo").classList.remove("novo");
+        } else {
+            window.alert("Coloque um nome!")
         }
+    } else if (document.getElementById("texto").checked) {
+        const nome2 = document.getElementById("nome-2").value;
+        const tema = document.getElementById("tema").value;
+        const data = document.getElementById("data").value;
 
-        //Remove highlight from other buttons
-        highlighterRemover(className);
-        if (!alreadyActive) {
-          //highlight clicked button
-          button.classList.add("active");
+        if (nome2 !== "" && tema !== "") {
+            if (localStorage.getItem("Editor-9" !== "")) {
+                localStorage.setItem("Editor-10", nome2);
+                localStorage.setItem("Tema-10", tema);
+                localStorage.setItem("Data-10", data);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-10");
+            } else if (localStorage.getItem("Editor-8" !== "")) {
+                localStorage.setItem("Editor-9", nome2);
+                localStorage.setItem("Tema-9", tema);
+                localStorage.setItem("Data-9", data);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-9");
+            } else if (localStorage.getItem("Editor-7" !== "")) {
+                localStorage.setItem("Editor-8", nome2);
+                localStorage.setItem("Tema-8", tema);
+                localStorage.setItem("Data-8", data);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-8");
+            } else if (localStorage.getItem("Editor-6" !== "")) {
+                localStorage.setItem("Editor-7", nome2);
+                localStorage.setItem("Tema-7", tema);
+                localStorage.setItem("Data-7", data);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-7");
+            } else if (localStorage.getItem("Editor-5" !== "")) {
+                localStorage.setItem("Editor-6", nome2);
+                localStorage.setItem("Tema-6", tema);
+                localStorage.setItem("Data-6", data);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-6");
+            } else if (localStorage.getItem("Editor-4" !== "")) {
+                localStorage.setItem("Editor-5", nome2);
+                localStorage.setItem("Tema-5", tema);
+                localStorage.setItem("Data-5", data);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-5");
+            } else if (localStorage.getItem("Editor-3" !== "")) {
+                localStorage.setItem("Editor-4", nome2);
+                localStorage.setItem("Tema-4", tema);
+                localStorage.setItem("Data-4", data);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-4");
+            } else if (localStorage.getItem("Editor-2" !== "")) {
+                localStorage.setItem("Editor-3", nome2);
+                localStorage.setItem("Tema-3", tema);
+                localStorage.setItem("Data-3", data);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-3");
+            } else if (localStorage.getItem("Editor-1" !== "")) {
+                localStorage.setItem("Editor-2", nome2);
+                localStorage.setItem("Tema-2", tema);
+                localStorage.setItem("Data-2", data);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-2");
+            } else {
+                localStorage.setItem("Editor-1", nome2);
+                localStorage.setItem("Tema-1", tema);
+                //localStorage.setItem("Data-1", data);
+
+                const data = new Date();
+                const dia = String(data.getDate()).padStart(2, "0");
+                const mes = String(data.getMonth() + 1).padStart(2, "0");
+                const ano = data.getFullYear();
+
+                localStorage.setItem("Data-1", dia + "/" + mes + "/" + ano);
+    
+                window.open("http://127.0.0.1:5500/site-1/editor-1");
+            }
         }
-      } else {
-        //if other buttons can be highlighted
-        button.classList.toggle("active");
-      }
-    });
-  });
-};
-
-const highlighterRemover = (className) => {
-  className.forEach((button) => {
-    button.classList.remove("active");
-  });
-};
-
-window.onload = initializer();
+    }
+}
